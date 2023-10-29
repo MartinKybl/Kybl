@@ -1,3 +1,9 @@
+from machine import Pin
+import time
+
+led = Pin("LED", Pin.OUT)
+led.off()
+
 morseovka_dic = { 'A':'.-', 'B':'-...',
                     'C':'-.-.', 'D':'-..', 'E':'.',
                     'F':'..-.', 'G':'--.', 'H':'....',
@@ -24,5 +30,37 @@ for letter in vstup:
 i = 0
 while(i<len(seznam)):
     print(morseovka_dic[seznam[i]])
-    i = i+1
+    x = list(morseovka_dic[seznam[i]])
+    
+    z = 0
+    for n in range(len(x)):
+        y = x[z]
+        
+        if y ==".":
+            led.on()
+            
+            time.sleep_ms(500)
+            
+            led.off()
+            time.sleep_ms(1000)
+        else: 
+            if y =="-":
+                led.on()
+                
+                time.sleep_ms(1200)
+                
+                led.off()
+                time.sleep_ms(1000)
+            else:
+                if y =="/":
+                    led.off
+                    time.sleep_ms(1200)
+                else:
+                    print("prace dokoncena sefe")
+
+        z = z + 1    
+    
+    i = i + 1
+
+    
 
